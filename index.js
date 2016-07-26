@@ -1,8 +1,9 @@
 var stylelint = require("stylelint");
+var styleSearch = require('style-search');
 
 var ruleName = "tmi/max-width-query"
 var messages = stylelint.utils.ruleMessages(ruleName, {
-  rejected: function(classname) { return "NO!" }
+  rejected: function() { return "asdfasdf" }
 })
 
 module.exports = stylelint.createPlugin(ruleName, function(enabled) {
@@ -15,30 +16,12 @@ module.exports = stylelint.createPlugin(ruleName, function(enabled) {
 
     if (!validOptions) { return }
 
-    var utilityClasses = primerUtilities.cssstats.selectors.values
-
-    if (utilityClasses.length == 0) {
-      return
-    }
-
-    root.walkRules(function(rule) {
-
-      var ruleClasses = rule.selector.match(/\.[a-z\-_0-9]+/ig)
-
-      if (ruleClasses != null) {
-        for (var i = 0; i < ruleClasses.length; i++) {
-          var ruleClass = ruleClasses[i]
-          if (utilityClasses.indexOf(ruleClass) >= 0) {
-            stylelint.utils.report({
-              message: messages.rejected(ruleClass),
-              node: rule,
-              result: result,
-              ruleName: ruleName
-            })
-          }
-        }
-      }
-    })
+    styleSearch({
+      source: result,
+      target: "green",
+    }, function(match, count) {
+      console.log('taco!');
+    });
   }
 })
 
