@@ -1,7 +1,7 @@
 {
   "name": "stylelint-max-width-query",
   "version": "1.0.0",
-  "description": "Stylelint rule that doesn't allow the styling of utility classes in CSS",
+  "description": "Warns or errors when using max-width in media queries",
   "main": "index.js",
   "scripts": {},
   "repository": {
@@ -11,10 +11,6 @@
   "keywords": [
     "stylelint-rule",
     "stylelint",
-    "url",
-    "domain",
-    "primer",
-    "github",
     "css"
   ],
   "author": "Aaron Bushnell",
